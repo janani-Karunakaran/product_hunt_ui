@@ -35,8 +35,10 @@ public class ProducthuntServiceImpl {
         return repo.save(product);
     }
 
-    public Optional<Product> getProduct(String productId) {
-        return repo.findById(productId);
+    public Product getProduct(String productId) {
+        Product existingProduct=repo.findById(productId)
+                .orElseThrow(()-> new RuntimeException("Product doesn't exist"));
+        return existingProduct;
     }
 
     public void deleteProduct(String productId) {

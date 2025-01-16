@@ -17,6 +17,7 @@ public class ProducthuntController {
     @Autowired
     ProducthuntServiceImpl service;
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/getAllProductList")
     public List<Product> getAllProductList(){
        return service.getAllProductList();
@@ -29,7 +30,7 @@ public class ProducthuntController {
 
     @GetMapping("/getProduct")
     public Product getProduct(@RequestParam String productId){
-        return service.getProduct(productId).get();
+        return service.getProduct(productId);
     }
 
     @DeleteMapping("/deleteProduct")
